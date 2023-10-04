@@ -1,0 +1,20 @@
+{% load static tailwind_tags %}
+<!DOCTYPE html>
+<html lang="es" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}Start{% endblock %} - Todo List</title>
+    <script src="{% static 'htmx.min.js' %}"></script>
+    {% tailwind_css %}
+  </head>
+  <body class="bg-white dark:bg-neutral-600 text-black dark:text-white">
+    <script>
+      document.body.addEventListener("htmx:configRequest", function (event) {
+        event.detail.headers["X-CSRFToken"] = "{{ csrf_token }}";
+      });
+    </script>
+    {% block content %}{% endblock %}
+  </body>
+</html>
