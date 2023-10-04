@@ -28,7 +28,11 @@ config: Dict[str,Union[str, None]] = {
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = config.get('SECRET_KEY') if 'SECRET_KEY' in config.keys() else exit(1)
+if 'SECRET_KEY' in config.keys():
+    SECRET_KEY = config.get('SECRET_KEY')
+else:
+    print('No SECRET_KEY found exiting...')
+    exit(1)
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config.get('DEBUG', 'False') == 'True'
