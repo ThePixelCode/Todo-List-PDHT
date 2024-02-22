@@ -20,7 +20,7 @@ To run server run once
 source .venv/bin/activate
 python manage.py tailwind install
 python manage.py tailwind build
-curl -o todo_list/static/htmx.min.js https://unpkg.com/htmx.org@1.9.6/dist/htmx.min.js
+curl -oL todo_list/static/htmx.min.js https://unpkg.com/htmx.org
 python manage.py collectstatic
 python manage.py migrate
 ```
